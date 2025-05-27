@@ -1,6 +1,17 @@
 # <img src="figures/cropped-logo-cda-light-back.png" alt="cropped-logo-cda-light-back" style="zoom:10%;" /> CDA Slammers FC ECNL B12 Games 
 
-🎥 Tip: Set video to 1080p in ⚙️ settings for best quality
+<table style="font-size: 0.85em; border: none; border-collapse: collapse;">
+  <tr>
+    <td style="padding-right: 11px;">🎥 Tip: Set video to 1080p in ⚙️ settings for best quality</td>
+    <td>
+      <a href="https://www.hitwebcounter.com" target="_blank">
+        <img src="https://hitwebcounter.com/counter/counter.php?page=20770041&style=0003&nbdigits=5&type=ip&initCount=10" 
+             title="Counter Widget" alt="Visit counter For Websites" border="0" 
+             style="transform: scale(0.5); transform-origin: center; vertical-align: middle;" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -21,6 +32,4 @@
 | <table><tr style="font-size: 0.85em"><td>2025-03-23</td><td style="text-align:center">Sun</td><td>1:00 - 2:20 pm</td></tr><tr><td>**Slammers**</td><td style="text-align:center"><span style="color:green; font-size:1.4em; font-weight:bold">3:2</span></td><td>**LA Breaker**</td></tr><tr style="font-size: 0.85em"><td><a href="https://drive.google.com/open?id=10SzBLR8lY_ikYUpDLlNnWEkDOhA2KGVj&usp=drive_fs">🎬 Highlight</a></td><td style="text-align:center; font-size: 0.85em">[1](https://drive.google.com/open?id=1-8Mg9QCDTSP6pe1i36ndKgLzPPB89y3z&usp=drive_fs) [2](https://drive.google.com/open?id=1-N7jn69DFFT5lSjeFOHEaDwfex-MLUfj&usp=drive_fs) [3](https://drive.google.com/open?id=1-RNzeqoP_7M5qzhmQtxjVVU2zxvNvwTu&usp=drive_fs) [4](https://drive.google.com/open?id=1-SMbgYzRqnJnFuuod8JRl8TkdN0PsgGm&usp=drive_fs) [5](https://drive.google.com/open?id=1-VRzs88Z9WZ8dU0uLwh3Ozqm0GYexxL9&usp=drive_fs)</td><td><a href="https://app.veo.co/matches/20220106-2022-01-06-090347-bde15c65/">▶️ Full Game</a></td></tr></table><img src="figures/LABreakergame.png" alt="LABreakergame" style="display:block; margin:auto; height:250px; width:auto;" /> | <table><tr style="font-size: 0.85em"><td>2025-03-22</td><td style="text-align:center"> Sat</td><td>9:00 - 10:20 am</td></tr><tr><td>**San Diego Surf**</td><td style="text-align:center"><span style="color:red; font-size:1.4em; font-weight:bold">2:0</span></td><td>**Slammers**</td></tr><tr style="font-size: 0.85em"><td><a href="https://drive.google.com/open?id=1--YRD3PsLcbQjsfopdDDoMsbrwERhQYn&usp=drive_fs">🎬 Highlight</a></td><td style="text-align:center; font-size: 0.85em">[1](https://drive.google.com/open?id=1-6S6izRvdLAXkuRjfVQmtXXfclC6K-qi&usp=drive_fs)  [2](https://drive.google.com/open?id=1-DnR78Ku8pOvWh4BO1oqra3H-b8WxNHK&usp=drive_fs)</td><td><a href="https://app.veo.co/matches/20220106-2022-01-06-085231-782e6155/">▶️ Full Game</a></td></tr></table><img src="figures/SanDiegoSurfgame.png" alt="SanDiegoSurfgame" style="display:block; margin:auto; height:250px; width:auto;" /> |
 
 
-
-<img src="https://hitwebcounter.com/counter/counter.php?page=1234567&style=0006&nbdigits=5&type=page&initCount=0" title="Web Counter" Alt="counter" border="0" />
 
