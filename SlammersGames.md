@@ -1,10 +1,17 @@
-# <img src="figures/CDASlammers.png" alt="cropped-logo-cda-light-back" style="zoom:10%;" /> CDA Slammers FC ECNL B12 Games 
+# <img src="figures/CDAslammers.png" alt="cropped-logo-cda-light-back" style="zoom:10%;" /> CDA Slammers FC ECNL B12 Games 
 
-<table style="font-size: 0.85em; border: none; border-collapse: collapse;">
+<table style="font-size: 0.95em; border: none; border-collapse: collapse; width: 100%;">
   <tr>
-    <td style="padding-right: 11px;">🎥 Set video to 1080p in ⚙️ settings for best quality</td>
-    <td><a href="ecnl_b2012_ranking.html">Ranking</a></td>    
-    <td>
+    <td style="padding-right: 11px; text-align: left; white-space: nowrap;">
+      🎥 Set video to 1080p in ⚙️ settings
+    </td>
+    <td style="width: 200px; text-align: center;">
+      <a href="ecnl_b2012_ranking.html" 
+         style="font-size: 1.25em; font-weight: bold; color: #1554c7; text-decoration: none;">
+       ECNL Standings
+      </a>
+    </td>
+    <td style="text-align: right;">
       <a href="https://www.hitwebcounter.com" target="_blank">
         <img src="https://hitwebcounter.com/counter/counter.php?page=20770041&style=0003&nbdigits=5&type=ip&initCount=10" 
              title="Counter Widget" alt="Visit counter For Websites" border="0" 
