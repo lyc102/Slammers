@@ -534,8 +534,8 @@
       
       renderRankings();
 
-      let delay = 400;
-      if (lastDate && g.date !== lastDate) delay = 600;
+      let delay = 200;
+      if (lastDate && g.date !== lastDate) delay = 200;
       lastDate = g.date;
 
       currentGameIndex++;
@@ -576,6 +576,200 @@ function startAnimation() {
     // Initial load
     initializeTeams();
     renderRankings();
+
+    // --- Confetti and Fireworks effect ---
+function launchConfettiAndPopup() {
+  const overlay = document.getElementById('celebrate-overlay');
+  overlay.style.display = 'block';
+
+  // --- Confetti ---
+  if (window.confetti) {
+    var duration = 5 * 1000;
+    var animationEnd = Date.now() + duration;
+    var defaults = { startVelocity: 33, spread: 360, ticks: 80, zIndex: 10001 };
+
+    function randomInRange(min, max) { return Math.random() * (max - min) + min; }
+
+    var interval = setInterval(function() {
+      var timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) { return clearInterval(interval); }
+      var particleCount = 60 * (timeLeft / duration);
+      window.confetti(Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.9), y: Math.random() * 0.3 }
+      }));
+    }, 180);
+  } else {
+    runSimpleConfetti();
+  }
+
+  // --- Fireworks ---
+  runFireworks(5000); // run for 5 seconds
+}
+
+function runFireworks(totalDuration=5000) {
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let width = canvas.width, height = canvas.height;
+
+  function randomColor() {
+    return `hsl(${Math.floor(Math.random()*360)},100%,60%)`;
+  }
+
+  function Firework() {
+    this.x = Math.random() * width * 0.8 + width*0.1;
+    this.y = height * (0.2 + Math.random()*0.3);
+    this.particles = [];
+    this.color = randomColor();
+    for(let i=0;i<45;i++) {
+      let angle = (Math.PI*2/45)*i;
+      let speed = Math.random()*3+2;
+      this.particles.push({
+        x: this.x, y: this.y,
+        vx: Math.cos(angle)*speed,
+        vy: Math.sin(angle)*speed,
+        alpha: 1, r: Math.random()*3+2
+      });
+    }
+  }
+
+  let fireworks = [];
+  let running = true;
+  function draw() {
+    ctx.clearRect(0,0,width,height);
+    for(let fw of fireworks) {
+      for(let p of fw.particles) {
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, 2*Math.PI);
+        ctx.fillStyle = fw.color;
+        ctx.fill();
+        ctx.restore();
+
+        // Move particle
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.04; // gravity
+        p.alpha -= 0.012;
+      }
+    }
+    fireworks = fireworks.filter(fw =>
+      fw.particles.some(p => p.alpha > 0)
+    );
+    if(running) requestAnimationFrame(draw);
+  }
+
+  // Launch fireworks every 0.6 sec
+  let fireworkInterval = setInterval(()=>{
+    fireworks.push(new Firework());
+  }, 600);
+
+  draw();
+  setTimeout(()=>{
+    running = false;
+    clearInterval(fireworkInterval);
+    // Clear canvas after fireworks end
+    setTimeout(()=>{ ctx.clearRect(0,0,width,height); }, 1300);
+  }, totalDuration);
+}
+
+// Option 1: Use cdn confetti library if available
+(function(){
+  var script=document.createElement('script');
+  script.src='https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+  script.async=true;
+  script.onload=()=>{};
+  document.head.appendChild(script);
+})();
+
+// Option 2: fallback
+function runSimpleConfetti() {
+  // quick fallback for fun - you may use any canvas confetti package
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  let particles = [];
+  for(let i=0;i<160;i++){
+    particles.push({
+      x: Math.random()*canvas.width, y: Math.random()*-50,
+      r: Math.random()*9+3, d: Math.random()*90+30,
+      color: `hsl(${Math.random()*360},96%,57%)`,
+      tilt: Math.random()*30-15, tiltAngle: Math.random()*0.2+0.04
+    });
+  }
+  let frame=0;
+  function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(let p of particles){
+      ctx.beginPath();
+      ctx.lineWidth = p.r;
+      ctx.strokeStyle = p.color;
+      ctx.moveTo(p.x+p.tilt+p.r,p.y);
+      ctx.lineTo(p.x,p.y+p.tilt+p.r);
+      ctx.stroke();
+    }
+    updateConfetti();
+    frame++;
+    if(frame<75) requestAnimationFrame(drawConfetti);
+  }
+  function updateConfetti(){
+    for(let p of particles){
+      p.y += Math.cos(p.d) + 2 + p.r/3;
+      p.x += Math.sin(p.d);
+      p.tilt += Math.sin(p.tiltAngle);
+      if(p.y > canvas.height+15) p.y = Math.random()*-20;
+    }
+  }
+  drawConfetti();
+}
+
+// Hide overlay on button click
+document.addEventListener('DOMContentLoaded',function(){
+  const overlay = document.getElementById('celebrate-overlay');
+  const btn = document.getElementById('congratsBtn');
+  if(btn) btn.onclick = ()=>{ overlay.style.display='none'; };
+});
+
+// --- At the end of processNextGame, trigger confetti/popup at the very end ---
+const originalProcessNextGame = processNextGame;
+processNextGame = function() {
+  if (currentGameIndex >= games.length) {
+    pauseAnimation();
+    document.getElementById('gameInfo').textContent = 'Season Complete!';
+    // Confetti & congrats popup
+    setTimeout(launchConfettiAndPopup, 350);
+    return;
+  }
+  // rest as before
+  const g = games[currentGameIndex];
+  const [hs, as] = g.score.split('-').map(Number);
+  updateTeamStats(g.home, g.away, hs, as);
+  document.getElementById('gameInfo').textContent =
+    `${g.date}: ${g.home.replace(' ECNL B12', '')} ${g.score} ${g.away.replace(' ECNL B12', '')}`;
+  renderRankings();
+
+  let delay = 200;
+  if (lastDate && g.date !== lastDate) delay = 200;
+  lastDate = g.date;
+  currentGameIndex++;
+  if (animationRunning) {
+    animationTimeout = setTimeout(processNextGame, delay);
+  }
+};
+
   </script>
+<!-- Confetti and overlay popup -->
+<div id="celebrate-overlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10000;background:rgba(0,0,0,0.16);pointer-events:auto;">
+  <canvas id="confetti-canvas" style="position:absolute;top:0;left:0;width:100vw;height:100vh;pointer-events:none;"></canvas>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;">
+    <button id="congratsBtn" style="padding:24px 38px;font-size:2em;font-weight:bold;color:#fff;background:linear-gradient(90deg,#e96443 0%,#904e95 100%);border:none;border-radius:15px;box-shadow:0 6px 30px #0006;cursor:pointer;">
+      🎉 Congrats on advancing to playoffs! 🎉
+    </button>
+  </div>
+</div>
 </body>
 </html>
