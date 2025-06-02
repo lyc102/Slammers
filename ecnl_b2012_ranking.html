@@ -402,7 +402,9 @@
 { date: 'May 31, 2025', home: 'San Diego Surf ECNL B12', away: 'Rebels SC ECNL B12', score: '2-2' },
 { date: 'May 31, 2025', home: 'West Coast FC ECNL B12', away: 'LA Breakers FC ECNL B12', score: '2-5' },
 { date: 'May 31, 2025', home: 'Slammers FC ECNL B12', away: 'Legends FC ECNL B12', score: '0-3' },
-{ date: 'May 31, 2025', home: 'LAFC So Cal ECNL B12', away: 'Sporting California USA ECNL B12', score: '2-0' }
+{ date: 'May 31, 2025', home: 'LAFC So Cal ECNL B12', away: 'Sporting California USA ECNL B12', score: '2-0' },
+{ date: 'Jun 01, 2025', home: 'LAFC So Cal ECNL B12', away: 'San Diego Surf ECNL B12', score: '0-1' },
+{ date: 'Jun 01, 2025', home: 'West Coast FC ECNL B12', away: 'Slammers FC ECNL B12', score: '4-2' }
 ];
 
     const allTeams = [
@@ -532,8 +534,8 @@
       
       renderRankings();
 
-      let delay = 200;
-      if (lastDate && g.date !== lastDate) delay = 200;
+      let delay = 250;
+      if (lastDate && g.date !== lastDate) delay = 250;
       lastDate = g.date;
 
       currentGameIndex++;
@@ -750,8 +752,8 @@ processNextGame = function() {
     `${g.date}: ${g.home.replace(' ECNL B12', '')} ${g.score} ${g.away.replace(' ECNL B12', '')}`;
   renderRankings();
 
-  let delay = 200;
-  if (lastDate && g.date !== lastDate) delay = 200;
+  let delay = 250;
+  if (lastDate && g.date !== lastDate) delay = 250;
   lastDate = g.date;
   currentGameIndex++;
   if (animationRunning) {
